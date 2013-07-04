@@ -1,52 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="BankAccount" default="build">
- <target name="build" depends="prepare,phpunit"/>
+    <target name="build" depends="prepare,phpunit"/>
 
- <target name="clean" description="Cleanup build artifacts">
-  <delete dir="${basedir}/build/coverage"/>
-  <delete dir="${basedir}/build/logs"/>
- </target>
+    <target name="clean" description="Cleanup build artifacts">
+        <delete dir="${basedir}/build/coverage"/>
+        <delete dir="${basedir}/build/logs"/>
+    </target>
 
- <target name="prepare" depends="clean,phpab" description="Prepare for build">
-  <mkdir dir="${basedir}/build/coverage"/>
-  <mkdir dir="${basedir}/build/logs"/>
- </target>
+    <target name="prepare" depends="clean,phpab" description="Prepare for build">
+        <mkdir dir="${basedir}/build/coverage"/>
+        <mkdir dir="${basedir}/build/logs"/>
+    </target>
 
- <target name="phpab" description="Generate autoloader scripts">
-  <exec executable="phpab">
-   <arg value="--output" />
-   <arg path="${basedir}/src/autoload.php" />
-   <arg value="--template" />
-   <arg path="${basedir}/build/src_autoload.php.in" />
-   <arg path="${basedir}/src" />
-  </exec>
+    <target name="phpab" description="Generate autoloader scripts">
+        <exec executable="phpab">
+            <arg value="--output" />
+            <arg path="${basedir}/src/autoload.php" />
+            <arg value="--template" />
+            <arg path="${basedir}/build/src_autoload.php.in" />
+            <arg path="${basedir}/src" />
+        </exec>
 
-  <exec executable="phpab">
-   <arg value="--output" />
-   <arg path="${basedir}/tests/autoload.php" />
-   <arg value="--template" />
-   <arg path="${basedir}/build/tests_autoload.php.in" />
-   <arg path="${basedir}/tests" />
-  </exec>
- </target>
+        <exec executable="phpab">
+            <arg value="--output" />
+            <arg path="${basedir}/tests/autoload.php" />
+            <arg value="--template" />
+            <arg path="${basedir}/build/tests_autoload.php.in" />
+            <arg path="${basedir}/tests" />
+        </exec>
+    </target>
 
- <target name="lint">
-  <apply executable="php" failonerror="true">
-   <arg value="-l" />
+    <target name="lint">
+        <apply executable="php" failonerror="true">
+            <arg value="-l" />
 
-   <fileset dir="${basedir}/src">
-    <include name="**/*.php" />
-   </fileset>
+            <fileset dir="${basedir}/src">
+                <include name="**/*.php" />
+            </fileset>
 
-   <fileset dir="${basedir}/tests">
-    <include name="**/*.php" />
-   </fileset>
-  </apply>
- </target>
+            <fileset dir="${basedir}/tests">
+                <include name="**/*.php" />
+            </fileset>
+        </apply>
+    </target>
 
- <target name="phpunit" description="Run unit tests with PHPUnit">
-  <exec executable="phpunit" failonerror="true"/>
- </target>
+    <target name="phpunit" description="Run unit tests with PHPUnit">
+        <exec executable="phpunit" failonerror="true"/>
+    </target>
+ 
+    <target name="phpdoc" description="Generate API documentation using 
+    PHPDocumentor">
+        <exec executable="phpdoc"> 
+            <arg value="--directory" />
+            <arg path="${basedir}/src" />
+            <arg value="--target" />
+            <arg path="${basedir}/build/api" />         
+        </exec>
+    </target>
+    
+    <target name="phploc" description="Measure project size using PHPLOC">
+        <exec executable="phploc">
+            <arg value="--log-csv" />
+            <arg value="${basedir}/build/logs/phploc.csv" />
+            <arg path="${basedir}/src" />
+        </exec>
+    </target>
+    
+    <target name="pdpend" description="Caluclate software metrics using 
+        PHP_Depend">
+        <exec executable="pdepend">
+            <arg value="--jdepend-xml=${basedir}/build/logs/jdpend.xml" />
+            <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg" />
+            <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg" />
+            <arg path="${basedir}/src" />
+        </exec>
+    </target>
  
 </project>
