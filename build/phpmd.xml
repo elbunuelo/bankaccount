@@ -9,17 +9,11 @@
 
   <rule ref="rulesets/codesize.xml/CyclomaticComplexity" />
   <rule ref="rulesets/codesize.xml/NPathComplexity" />
-  <rule ref="rulesets/codesize.xml/ExcessiveClassComplexity" />
-  <rule ref="rulesets/codesize.xml/ExcessiveClassLength" />
-  <rule ref="rulesets/codesize.xml/ExcessiveMethodLength" />
-  <rule ref="rulesets/codesize.xml/ExcessiveParameterList" />
 
   <rule ref="rulesets/design.xml/EvalExpression" />
   <rule ref="rulesets/design.xml/ExitExpression" />
   <rule ref="rulesets/design.xml/GotoStatement" />
-
-  <rule ref="rulesets/naming.xml/ConstructorWithNameAsEnclosingClass" />
-
+  
   <rule ref="rulesets/unusedcode.xml/UnusedFormalParameter" />
   <rule ref="rulesets/unusedcode.xml/UnusedLocalVariable" />
   <rule ref="rulesets/unusedcode.xml/UnusedPrivateField" />
