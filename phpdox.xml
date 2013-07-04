@@ -1,8 +1,8 @@
 <phpdox xmlns="http://phpdox.de/config">
-    <project name="name-of-project" source="src" workdir="build/phpdox">
+    <project name="bankaccount" source="src" workdir="build/api">
         <collector publiconly="false">
             <include mask="*.php" />
-            <exclude mask="*Autoload.php" />
+            <exclude mask="*autoload.php" />
         </collector>
 
         <generator output="build">
