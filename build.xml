@@ -130,7 +130,7 @@
             <arg value="--source" />
             <arg path="${basedir}/src" />
             <arg value="--output" />
-            <arg oath="${basedir}/build/code-browser" />
+            <arg path="${basedir}/build/code-browser" />
         </exec> 
     </target>
 </project>
