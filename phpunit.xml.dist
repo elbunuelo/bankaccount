@@ -14,11 +14,9 @@
   </testsuites>
 
   <logging>
-    <log type="coverage-html" target="build/coverage" title="BankAccount"
-         charset="UTF-8" yui="true" highlight="true"
-         lowUpperBound="35" highLowerBound="70"/>
+    <log type="coverage-html" target="build/coverage" title="BankAccount"/>
     <log type="coverage-clover" target="build/logs/clover.xml"/>
-    <log type="junit" target="build/logs/junit.xml" logIncompleteSkipped="false"/>
+    <log type="junit" target="build/logs/junit.xml"/>
   </logging>
 
   <filter>
@@ -29,12 +27,5 @@
       </exclude>
     </whitelist>
   </filter>
-
-  <selenium>
-    <browser name="Firefox on localhost"
-             browser="*chrome"
-             host="localhost"
-             port="4444"
-             timeout="30000"/>
-  </selenium>
+  
 </phpunit>
