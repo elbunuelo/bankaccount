@@ -55,7 +55,7 @@
         <exec executable="phpunit" failonerror="true"/>
     </target>
  
-    <target name="parallelTasks" descriprion="Run code analysis tasks in parallel">
+    <target name="parallelTasks" description="Run code analysis tasks in parallel">
         <parallel threadCount="2">
             <sequential>
                 <antcall target="pdepend" />
