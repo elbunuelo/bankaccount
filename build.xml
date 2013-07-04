@@ -63,21 +63,10 @@
             </sequential>
             <antcall target="phpcpd" />
             <antcall target="phpcs" />
-            <antcall target="phpdoc" />
             <antcall target="phploc" />
         </parallel>
     </target>
-    
-    <target name="phpdoc" description="Generate API documentation using 
-    PHPDocumentor">
-        <exec executable="phpdoc"> 
-            <arg value="--directory" />
-            <arg path="${basedir}/src" />
-            <arg value="--target" />
-            <arg path="${basedir}/build/api" />         
-        </exec>
-    </target>
-    
+       
     <target name="phploc" description="Measure project size using PHPLOC">
         <exec executable="phploc">
             <arg value="--log-csv" />
