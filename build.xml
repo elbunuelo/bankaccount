@@ -63,10 +63,17 @@
             </sequential>
             <antcall target="phpcpd" />
             <antcall target="phpcs" />
+            <antcall target="phpdox" />
             <antcall target="phploc" />
         </parallel>
     </target>
-       
+    
+    <target name="phpdox" description="Generate API documentation using 
+    PHPDox">
+        <exec executable="phpdox">    
+        </exec>
+    </target>
+    
     <target name="phploc" description="Measure project size using PHPLOC">
         <exec executable="phploc">
             <arg value="--log-csv" />
