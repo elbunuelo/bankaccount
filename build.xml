@@ -86,7 +86,7 @@
         </exec>
     </target>
     
-    <target name="pdpend" description="Caluclate software metrics using 
+    <target name="pdepend" description="Caluclate software metrics using 
         PHP_Depend">
         <exec executable="pdepend">
             <arg value="--jdepend-xml=${basedir}/build/logs/jdpend.xml" />
